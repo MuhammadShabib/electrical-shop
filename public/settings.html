@@ -1,0 +1,1100 @@
+```html
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        تنظیمات سیستم
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+</head>
+
+
+<body>
+
+<header class="header">
+
+    <h1 id="systemTitle">
+       سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- عنوان -->
+
+    <div class="page-title">
+
+        <h2>
+            ⚙️ تنظیمات سیستم
+        </h2>
+
+        <button
+            type="button"
+            onclick="window.location.href='/'">
+
+            🏠 داشبورد
+
+        </button>
+
+    </div>
+
+
+    <!-- تب‌ها -->
+
+    <div class="form-container">
+
+        <div
+            class="settings-tabs"
+            style="
+                display:flex;
+                flex-wrap:wrap;
+                gap:10px;
+                margin-bottom:20px;
+            ">
+
+            <button
+                type="button"
+                class="settings-tab active"
+                data-tab="appearanceTab">
+
+                🎨 ظاهر سیستم
+
+            </button>
+
+
+            <button
+                type="button"
+                class="settings-tab"
+                data-tab="shopTab">
+
+                🏪 اطلاعات فروشگاه
+
+            </button>
+
+
+            <button
+                type="button"
+                class="settings-tab"
+                data-tab="invoiceTab">
+
+                🧾 تنظیمات فاکتور
+
+            </button>
+
+
+            <button
+                type="button"
+                class="settings-tab"
+                data-tab="financialTab">
+
+                💰 تنظیمات مالی
+
+            </button>
+
+
+            <button
+                type="button"
+                class="settings-tab"
+                data-tab="securityTab">
+
+                🔐 امنیت
+
+            </button>
+
+
+            <button
+                type="button"
+                class="settings-tab"
+                data-tab="backupTab">
+
+                💾 پشتیبان‌گیری
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             ظاهر سیستم
+        ========================== -->
+
+        <section
+            id="appearanceTab"
+            class="settings-panel">
+
+            <h3>
+                🎨 ظاهر سیستم
+            </h3>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="fontFamily">
+                        فونت سیستم
+                    </label>
+
+                    <select id="fontFamily">
+
+                        <option value="Tahoma">
+                            Tahoma
+                        </option>
+
+                        <option value="Arial">
+                            Arial
+                        </option>
+
+                        <option value="Vazirmatn">
+                            Vazirmatn
+                        </option>
+
+                        <option value="B Nazanin">
+                            B Nazanin
+                        </option>
+
+                        <option value="B Mitra">
+                            B Mitra
+                        </option>
+
+                        <option value="sans-serif">
+                            Sans Serif
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="fontSize">
+                        اندازه فونت
+                    </label>
+
+                    <select id="fontSize">
+
+                        <option value="14px">
+                            کوچک
+                        </option>
+
+                        <option value="16px">
+                            متوسط
+                        </option>
+
+                        <option value="18px">
+                            بزرگ
+                        </option>
+
+                        <option value="20px">
+                            خیلی بزرگ
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="primaryColor">
+                        رنگ اصلی
+                    </label>
+
+                    <input
+                        type="color"
+                        id="primaryColor"
+                        value="#2563eb">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="secondaryColor">
+                        رنگ دوم
+                    </label>
+
+                    <input
+                        type="color"
+                        id="secondaryColor"
+                        value="#1e293b">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="buttonColor">
+                        رنگ دکمه‌ها
+                    </label>
+
+                    <input
+                        type="color"
+                        id="buttonColor"
+                        value="#2563eb">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="theme">
+                        حالت نمایش
+                    </label>
+
+                    <select id="theme">
+
+                        <option value="light">
+                            روشن
+                        </option>
+
+                        <option value="dark">
+                            تاریک
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="tableStyle">
+                        ظاهر جدول‌ها
+                    </label>
+
+                    <select id="tableStyle">
+
+                        <option value="normal">
+                            عادی
+                        </option>
+
+                        <option value="compact">
+                            فشرده
+                        </option>
+
+                        <option value="bordered">
+                            حاشیه‌دار
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    id="saveAppearanceBtn">
+
+                    💾 ذخیره ظاهر
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             اطلاعات فروشگاه
+        ========================== -->
+
+        <section
+            id="shopTab"
+            class="settings-panel"
+            style="display:none;">
+
+            <h3>
+                🏪 اطلاعات فروشگاه
+            </h3>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="shopName">
+                        نام سیستم / فروشگاه
+                    </label>
+
+                    <input
+                        type="text"
+                        id="shopName"
+                        maxlength="150"
+                        placeholder="نام فروشگاه">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        شماره تماس
+                    </label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        maxlength="50"
+                        placeholder="شماره تماس">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        آدرس
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        maxlength="255"
+                        placeholder="آدرس فروشگاه">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="shopDescription">
+                        توضیحات
+                    </label>
+
+                    <textarea
+                        id="shopDescription"
+                        maxlength="500"
+                        rows="4"
+                        placeholder="توضیحات فروشگاه">
+                    </textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="logo">
+                        مسیر یا نام لوگو
+                    </label>
+
+                    <input
+                        type="text"
+                        id="logo"
+                        maxlength="255"
+                        placeholder="/uploads/logo.png">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        نمایش نام فروشگاه
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="showShopName">
+
+                        نمایش نام در سیستم و فاکتور
+
+                    </label>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        نمایش شماره تماس و آدرس
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="showShopContact">
+
+                        نمایش اطلاعات تماس
+
+                    </label>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        نمایش لوگو
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="showLogo">
+
+                        نمایش لوگو در فاکتور
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    id="saveShopBtn">
+
+                    💾 ذخیره اطلاعات فروشگاه
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             تنظیمات فاکتور
+        ========================== -->
+
+        <section
+            id="invoiceTab"
+            class="settings-panel"
+            style="display:none;">
+
+            <h3>
+                🧾 تنظیمات فاکتور
+            </h3>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="invoiceFooter">
+                        متن پایین فاکتور
+                    </label>
+
+                    <input
+                        type="text"
+                        id="invoiceFooter"
+                        maxlength="255"
+                        placeholder="تشکر از خرید شما">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="printCopies">
+                        تعداد نسخه چاپ
+                    </label>
+
+                    <input
+                        type="number"
+                        id="printCopies"
+                        min="1"
+                        max="10"
+                        step="1"
+                        value="1">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        نمایش نام فروشگاه در فاکتور
+                    </label>
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="invoiceShowShopName">
+
+                        نمایش نام
+
+                    </label>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        نمایش آدرس و تلفن در فاکتور
+                    </label>
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="invoiceShowShopContact">
+
+                        نمایش اطلاعات تماس
+
+                    </label>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        نمایش لوگو در فاکتور
+                    </label>
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="invoiceShowLogo">
+
+                        نمایش لوگو
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    id="saveInvoiceBtn">
+
+                    💾 ذخیره تنظیمات فاکتور
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             تنظیمات مالی
+        ========================== -->
+
+        <section
+            id="financialTab"
+            class="settings-panel"
+            style="display:none;">
+
+            <h3>
+                💰 تنظیمات مالی
+            </h3>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="currency">
+                        واحد پول
+                    </label>
+
+                    <select id="currency">
+
+                        <option value="AFN">
+                            افغانی (AFN)
+                        </option>
+
+                        <option value="USD">
+                            دالر (USD)
+                        </option>
+
+                        <option value="IRR">
+                            ریال (IRR)
+                        </option>
+
+                        <option value="EUR">
+                            یورو (EUR)
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="decimalPlaces">
+                        تعداد اعشار
+                    </label>
+
+                    <select id="decimalPlaces">
+
+                        <option value="0">
+                            0
+                        </option>
+
+                        <option value="1">
+                            1
+                        </option>
+
+                        <option value="2">
+                            2
+                        </option>
+
+                        <option value="3">
+                            3
+                        </option>
+
+                        <option value="4">
+                            4
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="amountFormat">
+                        نحوه نمایش مبالغ
+                    </label>
+
+                    <select id="amountFormat">
+
+                        <option value="comma">
+                            1,000,000
+                        </option>
+
+                        <option value="plain">
+                            1000000
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    id="saveFinancialBtn">
+
+                    💾 ذخیره تنظیمات مالی
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             امنیت
+        ========================== -->
+
+       <!-- =========================
+     امنیت و مدیریت کاربران
+========================== -->
+
+<section
+    id="securityTab"
+    class="settings-panel"
+    style="display:none;">
+
+    <h3>
+        🔐 امنیت و مدیریت کاربران
+    </h3>
+
+
+    <!-- فرم کاربر -->
+
+    <div class="form-container">
+
+        <h4 id="userFormTitle">
+            ایجاد کاربر جدید
+        </h4>
+
+
+        <form id="userForm">
+
+
+            <input
+                type="hidden"
+                id="userId">
+
+
+            <div class="form-grid">
+
+
+                <!-- نام -->
+
+                <div class="form-group">
+
+                    <label for="userName">
+                        نام کاربر
+                    </label>
+
+                    <input
+                        type="text"
+                        id="userName"
+                        maxlength="100"
+                        required
+                        placeholder="مثلاً احمد احمدی">
+
+                </div>
+
+
+                <!-- نام کاربری -->
+
+                <div class="form-group">
+
+                    <label for="username">
+                        نام کاربری
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        maxlength="50"
+                        required
+                        placeholder="نام کاربری ورود">
+
+                </div>
+
+
+                <!-- رمز -->
+
+                <div class="form-group">
+
+                    <label for="userPassword">
+                        رمز عبور
+                    </label>
+
+                    <input
+                        type="password"
+                        id="userPassword"
+                        minlength="6"
+                        placeholder="حداقل ۶ کاراکتر">
+
+                    <small>
+                        هنگام ایجاد کاربر الزامی است.
+                        هنگام ویرایش خالی بگذارید.
+                    </small>
+
+                </div>
+
+
+                <!-- نقش -->
+
+                <div class="form-group">
+
+                    <label for="userRole">
+                        نقش کاربر
+                    </label>
+
+                    <select id="userRole">
+
+                        <option value="admin">
+                            مدیر سیستم
+                        </option>
+
+                        <option value="seller" selected>
+                            شرکت
+                        </option>
+
+                        <option value="accountant">
+                            حسابدار
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- وضعیت -->
+
+                <div class="form-group">
+
+                    <label for="userStatus">
+                        وضعیت
+                    </label>
+
+                    <select id="userStatus">
+
+                        <option value="1">
+                            فعال
+                        </option>
+
+                        <option value="0">
+                            غیرفعال
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    id="saveUserBtn">
+
+                    ➕ ایجاد کاربر
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="cancelEditUserBtn"
+                    class="cancel-btn"
+                    style="display:none;">
+
+                    لغو ویرایش
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+    <!-- لیست کاربران -->
+
+    <div class="form-container">
+
+        <h4>
+            👥 کاربران سیستم
+        </h4>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            نام
+                        </th>
+
+                        <th>
+                            نام کاربری
+                        </th>
+
+                        <th>
+                            نقش
+                        </th>
+
+                        <th>
+                            وضعیت
+                        </th>
+
+                        <th>
+                            تاریخ ایجاد
+                        </th>
+
+                        <th>
+                            عملیات
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="usersBody">
+
+                    <tr>
+
+                        <td colspan="7">
+                            در حال دریافت کاربران...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div
+            id="usersMessage"
+            style="margin-top:15px;">
+        </div>
+
+    </div>
+
+
+    <!-- توضیح امنیت -->
+
+    <div class="form-container">
+
+        <h4>
+            🛡 راهنمای نقش‌ها
+        </h4>
+
+
+        <p>
+            <strong>مدیر سیستم:</strong>
+            دسترسی مدیریتی کامل
+        </p>
+
+
+        <p>
+            <strong>شرکت:</strong>
+            مناسب برای ثبت فروش و عملیات فروش
+        </p>
+
+
+        <p>
+            <strong>حسابدار:</strong>
+            مناسب برای امور مالی و حسابداری
+        </p>
+
+    </div>
+
+</section>
+
+
+        <!-- =========================
+             بکاپ
+        ========================== -->
+
+        <section
+            id="backupTab"
+            class="settings-panel"
+            style="display:none;">
+
+            <h3>
+                💾 پشتیبان‌گیری و بازیابی
+            </h3>
+
+
+            <p>
+                برای جلوگیری از از دست رفتن اطلاعات،
+                به‌صورت منظم از دیتابیس نسخه پشتیبان تهیه کنید.
+            </p>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    id="backupBtn">
+
+                    💾 ایجاد بکاپ
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="restoreBtn"
+                    class="cancel-btn">
+
+                    ♻️ بازیابی بکاپ
+
+                </button>
+
+            </div>
+
+
+            <input
+                type="file"
+                id="backupFile"
+                accept=".sql"
+                style="display:none;">
+
+
+            <div
+                id="backupMessage"
+                style="margin-top:20px;">
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+    <!-- پیام کلی -->
+
+    <div
+        id="settingsMessage"
+        style="margin-top:20px;">
+    </div>
+
+
+</main>
+
+<script src="/js/system-settings.js"></script>
+<script src="/js/settings.js"></script>
+<script src="/js/users.js"></script>
+<script src="/js/page-auth.js"></script>
+</body>
+
+</html>

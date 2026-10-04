@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>برگشت فروش</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- عنوان -->
+
+    <div class="page-title">
+
+        <h2>
+            برگشت دوا از مشتری
+        </h2>
+
+        <div style="display:flex; gap:10px;">
+
+            <button
+                type="button"
+                onclick="window.location.href='/'">
+
+                🏠 داشبورد
+
+            </button>
+
+            <button
+                type="button"
+                onclick="history.back()">
+
+                ← بازگشت
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- انتخاب فاکتور فروش -->
+
+    <div class="form-container">
+
+        <h3>
+            انتخاب فاکتور فروش
+        </h3>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label for="saleSelect">
+                    فاکتور فروش
+                </label>
+
+                <select id="saleSelect">
+
+                    <option value="">
+                        انتخاب فاکتور
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    مشتری
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    readonly
+                    placeholder="مشتری">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    مبلغ فاکتور
+                </label>
+
+                <input
+                    type="text"
+                    id="saleTotal"
+                    readonly
+                    value="0">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    مبلغ دواهای برگشتی
+                </label>
+
+                <input
+                    type="text"
+                    id="returnTotal"
+                    readonly
+                    value="0">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="refundAmount">
+                    مبلغ بازپرداخت نقدی
+                </label>
+
+                <input
+                    type="number"
+                    id="refundAmount"
+                    min="0"
+                    step="0.01"
+                    value="0">
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- اقلام فروش -->
+
+    <div class="table-container">
+
+        <h3>
+            انتخاب اقلام برگشتی
+        </h3>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        دوا
+                    </th>
+
+                    <th>
+                        تعداد فروش
+                    </th>
+
+                    <th>
+                        تعداد برگشتی
+                    </th>
+
+                    <th>
+                        قیمت فروش
+                    </th>
+
+                    <th>
+                        مبلغ برگشت
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="returnItemsBody">
+
+                <tr>
+
+                    <td colspan="5">
+                        ابتدا یک فاکتور فروش انتخاب کنید
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- توضیحات -->
+
+    <div class="form-container">
+
+        <div class="form-group">
+
+            <label for="description">
+                توضیحات
+            </label>
+
+            <textarea
+                id="description"
+                maxlength="255"
+                placeholder="دلیل برگشت یا توضیحات..."></textarea>
+
+        </div>
+
+    </div>
+
+
+    <!-- ثبت -->
+
+    <div class="form-buttons">
+
+        <button
+            type="button"
+            id="saveReturnBtn">
+
+            ثبت برگشت فروش
+
+        </button>
+
+
+        <button
+            type="button"
+            class="cancel-btn"
+            onclick="history.back()">
+
+            انصراف
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="message"
+        style="margin-top:20px;">
+    </div>
+
+
+</main>
+
+
+<script src="/js/sale-return.js"></script>
+
+</body>
+
+</html>

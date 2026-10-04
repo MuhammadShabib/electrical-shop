@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>لیست فروش‌ها</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>سیستم مدیریت دواخانه</h1>
+</header>
+
+<main class="container">
+
+    <div class="page-title">
+
+        <h2>لیست فاکتورهای فروش</h2>
+
+        <div>
+
+            <button
+                type="button"
+                onclick="window.location.href='/sales.html'">
+                + فروش جدید
+            </button>
+
+            <button
+                type="button"
+                onclick="window.location.href='/'">
+                ← بازگشت
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- جستجو -->
+
+    <div class="form-container">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>
+                    جستجو
+                </label>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="شماره فاکتور یا نام مشتری..."
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- جدول فروش‌ها -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+
+                    <th>شماره فاکتور</th>
+
+                    <th>مشتری</th>
+
+                    <th>مبلغ کل</th>
+
+                    <th>تخفیف</th>
+
+                    <th>پرداختی</th>
+
+                    <th>باقی‌مانده</th>
+
+                    <th>تاریخ</th>
+
+                    <th>عملیات</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="salesTableBody">
+
+                <tr>
+
+                    <td colspan="9">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- خلاصه -->
+
+    <div class="form-container">
+
+        <div class="summary-row">
+
+            <span>
+                تعداد فاکتورها:
+            </span>
+
+            <strong id="saleCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع فروش:
+            </span>
+
+            <strong id="totalSales">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع تخفیف:
+            </span>
+
+            <strong id="totalDiscount">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع پرداختی:
+            </span>
+
+            <strong id="totalPaid">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع بدهی:
+            </span>
+
+            <strong id="totalRemaining">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="/js/sales-list.js"></script>
+
+</body>
+
+</html>

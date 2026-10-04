@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>سیستم مدیریت فروشگاه</title>
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>سیستم مدیریت دواخانه</h1>
+    </header>
+
+  <main class="container">
+
+  <div class="page-title">
+
+    <h2>
+       مدیریت دوا ها
+    </h2>
+
+    <div style="display: flex; gap: 10px;">
+
+        <button
+            type="button"
+            onclick="window.location.href='/'"
+        >
+            🏠 داشبورد
+        </button>
+
+        <button
+            type="button"
+            id="addProductBtn"
+        >
+            + ثبت دوای جدید
+        </button>
+
+    </div>
+
+</div>
+
+    <!-- فرم ثبت دوا -->
+    <div id="productFormContainer" class="form-container hidden">
+
+   <h3 id="formTitle">ثبت دوای جدید</h3>
+
+        <form id="productForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>کد دوا</label>
+                    <input
+                        type="text"
+                        id="code"
+                        required
+                        placeholder="مثلاً 0001"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>نام دوا</label>
+                    <input
+                        type="text"
+                        id="name"
+                        required
+                        placeholder="مثلا Tab Parol"
+                    >
+                </div>
+
+               <div class="form-group">
+
+    <label>دسته‌بندی</label>
+
+    <div class="category-select-row">
+
+        <select id="category_id">
+            <option value="">انتخاب دسته‌بندی</option>
+        </select>
+
+        <button
+            type="button"
+            id="addCategoryBtn"
+            class="small-btn"
+        >
+            + دسته‌بندی جدید
+        </button>
+
+    </div>
+
+</div>
+
+                <div class="form-group">
+                    <label>واحد</label>
+
+                   <select id="unit">
+    <option value="پاکت">پاکت</option>
+    <option value="قطی">قطی</option>
+    <option value="دانه">دانه</option>
+    <option value="بسته">بسته</option>
+    <option value="کارتن">کارتن</option>
+</select>
+                </div>
+
+                <div class="form-group">
+                    <label>قیمت خرید</label>
+
+                    <input
+                        type="number"
+                        id="purchase_price"
+                        min="0"
+                        value="0"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>قیمت فروش</label>
+
+                    <input
+                        type="number"
+                        id="sale_price"
+                        min="0"
+                        value="0"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>موجودی اولیه</label>
+
+                    <input
+                        type="number"
+                        id="stock"
+                        min="0"
+                        value="0"
+                        step="0.001"
+                    >
+                </div>
+
+                <div class="form-group">
+    <label>تاریخ انقضا</label>
+
+    <input
+        type="date"
+        id="opening_expiry_date"
+    >
+</div>
+
+                <div class="form-group">
+                    <label>حداقل موجودی</label>
+
+                    <input
+                        type="number"
+                        id="min_stock"
+                        min="0"
+                        value="0"
+                        step="0.001"
+                    >
+                </div>
+
+                <div class="form-group full-width">
+                    <label>توضیحات</label>
+
+                    <textarea
+                        id="description"
+                        placeholder="توضیحات دوا..."
+                    ></textarea>
+                </div>
+
+            </div>
+
+            <div class="form-buttons">
+
+              <button type="submit" id="saveProductBtn">
+    ذخیره دوا
+</button>
+                <button
+                    type="button"
+                    id="cancelProductBtn"
+                    class="cancel-btn"
+                >
+                    انصراف
+                </button>
+
+            </div>
+<input type="hidden" id="productId">
+        </form>
+
+    </div>
+
+<!-- پنجره افزودن دسته‌بندی -->
+
+<div id="categoryModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <h3>افزودن دسته‌بندی جدید</h3>
+
+        <form id="categoryForm">
+
+            <div class="form-group">
+
+                <label>نام دسته‌بندی</label>
+
+                <input
+                    type="text"
+                    id="categoryName"
+                    placeholder="مثلاً بهداشتی"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>توضیحات</label>
+
+                <textarea
+                    id="categoryDescription"
+                    placeholder="توضیحات دسته‌بندی..."
+                ></textarea>
+
+            </div>
+
+            <div class="form-buttons">
+
+                <button type="submit">
+                    ذخیره
+                </button>
+
+                <button
+                    type="button"
+                    id="closeCategoryBtn"
+                    class="cancel-btn"
+                >
+                    انصراف
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+    <!-- جستجو -->
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="جستجوی نام یا کد دوا..."
+        >
+
+    </div>
+
+
+    <!-- جدول دواها -->
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>کد</th>
+                    <th>نام دوا</th>
+                    <th>دسته‌بندی</th>
+                    <th>واحد</th>
+                    <th>قیمت خرید</th>
+                    <th>قیمت فروش</th>
+                    <th>موجودی</th>
+                    <th>وضعیت</th>
+                    <th>عملیات</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="productsTableBody"></tbody>
+
+        </table>
+
+    </div>
+
+
+
+<!-- =========================
+     پنجره مدیریت بچ دارو
+========================= -->
+
+<div
+    id="batchModal"
+    class="modal hidden">
+
+    <div class="modal-content">
+
+        <h3 id="batchModalTitle">
+            بچ‌های دارو
+        </h3>
+
+
+        <!-- فرم ثبت بچ -->
+
+        <form id="batchForm">
+
+            <input
+                type="hidden"
+                id="batchProductId"
+            >
+
+
+            <div class="form-group">
+
+                <label>
+                    شماره بچ
+                </label>
+
+                <input
+                    type="text"
+                    id="batchNumber"
+                    required
+                    placeholder="مثلاً B-1001"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    تاریخ انقضا
+                </label>
+
+                <input
+                    type="date"
+                    id="batchExpiryDate"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    مقدار
+                </label>
+
+                <input
+                    type="number"
+                    id="batchQuantity"
+                    min="0.001"
+                    step="0.001"
+                    value="0"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    قیمت خرید
+                </label>
+
+                <input
+                    type="number"
+                    id="batchPurchasePrice"
+                    min="0"
+                    step="0.01"
+                    value="0"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    قیمت فروش
+                </label>
+
+                <input
+                    type="number"
+                    id="batchSalePrice"
+                    min="0"
+                    step="0.01"
+                    value="0"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    id="saveBatchBtn">
+
+                    💾 ثبت بچ
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="closeBatchBtn"
+                    class="cancel-btn">
+
+                    انصراف
+
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <!-- لیست بچ‌ها -->
+
+        <div
+            id="batchListContainer"
+            style="margin-top:20px;">
+
+            <h4>
+                بچ‌های ثبت‌شده
+            </h4>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                شماره بچ
+                            </th>
+
+                            <th>
+                                انقضا
+                            </th>
+
+                            <th>
+                                مقدار
+                            </th>
+
+                            <th>
+                                قیمت خرید
+                            </th>
+
+                            <th>
+                                قیمت فروش
+                            </th>
+
+                            <th>
+                                وضعیت
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="batchTableBody">
+
+                        <tr>
+
+                            <td colspan="6">
+                                دارویی انتخاب نشده است
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+</main>
+
+    <script src="js/products.js"></script>
+
+</body>
+</html>

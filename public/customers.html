@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>مدیریت مشتریان</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- عنوان صفحه -->
+
+    <div class="page-title">
+
+        <h2>
+            مدیریت مشتریان
+        </h2>
+
+     <div
+            style="
+                display:flex;
+                gap:10px;
+            "
+        >
+
+
+           <button id="addCustomerBtn">
+            + مشتری جدید
+        </button>
+
+
+            <button
+                type="button"
+                onclick="window.location.href='/'"
+            >
+                🏠 داشبورد
+            </button>
+
+        </div>
+  </div>
+
+    <!-- فرم مشتری -->
+
+    <div
+        id="customerFormContainer"
+        class="form-container hidden"
+    >
+
+        <h3 id="customerFormTitle">
+            ثبت مشتری جدید
+        </h3>
+
+
+        <form id="customerForm">
+
+
+            <div class="form-grid">
+
+
+                <!-- نام -->
+
+                <div class="form-group">
+
+                    <label>
+                        نام مشتری
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        required
+                        placeholder="مثلاً احمد احمدی"
+                    >
+
+                </div>
+
+
+                <!-- شماره تماس -->
+
+                <div class="form-group">
+
+                    <label>
+                        شماره تماس
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerPhone"
+                        placeholder="مثلاً 0700000000"
+                    >
+
+                </div>
+
+
+                <!-- آدرس -->
+
+                <div class="form-group">
+
+                    <label>
+                        آدرس
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerAddress"
+                        placeholder="آدرس مشتری"
+                    >
+
+                </div>
+
+
+                <!-- موجودی اولیه -->
+
+                <div class="form-group">
+
+                    <label>
+                        موجودی اولیه
+                    </label>
+
+                    <input
+                        type="number"
+                        id="openingBalance"
+                        min="0"
+                        value="0"
+                    >
+
+                </div>
+
+
+                <!-- نوع موجودی -->
+
+                <div class="form-group">
+
+                    <label>
+                        نوع حساب
+                    </label>
+
+                    <select id="openingBalanceType">
+
+                        <option value="debit">
+                            بدهکار
+                        </option>
+
+                        <option value="credit">
+                            طلبکار
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- توضیحات -->
+
+                <div class="form-group full-width">
+
+                    <label>
+                        توضیحات
+                    </label>
+
+                    <textarea
+                        id="customerDescription"
+                        placeholder="توضیحات مشتری..."
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+
+                <button
+                    type="submit"
+                    id="saveCustomerBtn"
+                >
+                    ذخیره مشتری
+                </button>
+
+
+                <button
+                    type="button"
+                    id="cancelCustomerBtn"
+                    class="cancel-btn"
+                >
+                    انصراف
+                </button>
+
+
+            </div>
+
+
+            <input
+                type="hidden"
+                id="customerId"
+            >
+
+
+        </form>
+
+    </div>
+
+
+    <!-- جستجو -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="customerSearch"
+            placeholder="جستجوی نام یا شماره تماس..."
+        >
+
+    </div>
+
+
+    <!-- جدول -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        نام
+                    </th>
+
+                    <th>
+                        شماره تماس
+                    </th>
+
+                    <th>
+                        آدرس
+                    </th>
+
+                    <th>
+                        موجودی اولیه
+                    </th>
+
+                    <th>
+                        نوع حساب
+                    </th>
+
+                    <th>
+                        وضعیت
+                    </th>
+
+                    <th>
+                        عملیات
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="customersTableBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</main>
+
+
+<script src="/js/customers.js"></script>
+
+
+</body>
+
+</html>

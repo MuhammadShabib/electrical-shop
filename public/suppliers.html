@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مدیریت شرکت ها</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+    <div class="page-title">
+
+        <h2>
+            مدیریت شرکت ها
+        </h2>
+
+        <button
+            type="button"
+            onclick="window.location.href='/'">
+            ← بازگشت
+        </button>
+
+    </div>
+
+
+    <!-- فرم ثبت شرکت -->
+
+    <div class="form-container">
+
+        <h3>
+            ثبت شرکت جدید
+        </h3>
+
+
+        <form id="supplierForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        نام شرکت
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        maxlength="150"
+                        required
+                        placeholder="نام شرکت">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        شماره تماس
+                    </label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        maxlength="30"
+                        placeholder="شماره تماس">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        آدرس
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        maxlength="255"
+                        placeholder="آدرس">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="openingBalance">
+                        مانده اولیه
+                    </label>
+
+                    <input
+                        type="number"
+                        id="openingBalance"
+                        min="0"
+                        step="0.01"
+                        value="0">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        توضیحات
+                    </label>
+
+                    <input
+                        type="text"
+                        id="description"
+                        maxlength="255"
+                        placeholder="توضیحات">
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="message"
+                style="margin-top:20px;">
+            </div>
+
+
+            <div style="margin-top:20px;">
+
+                <button type="submit">
+                    + ثبت شرکت
+                </button>
+
+                <button
+                    type="reset">
+                    پاک کردن
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- جستجو -->
+
+    <div class="form-container">
+
+        <div class="form-group">
+
+            <label for="searchInput">
+                جستجوی شرکت
+            </label>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="نام یا شماره تماس...">
+
+        </div>
+
+    </div>
+
+
+    <!-- لیست شرکت ها -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        نام
+                    </th>
+
+                    <th>
+                        شماره تماس
+                    </th>
+
+                    <th>
+                        آدرس
+                    </th>
+
+                    <th>
+                        مانده اولیه
+                    </th>
+
+                    <th>
+                        عملیات
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="suppliersBody">
+
+                <tr>
+
+                    <td colspan="6">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<script src="/js/suppliers.js"></script>
+
+</body>
+
+</html>

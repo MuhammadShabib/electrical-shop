@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>گزارش‌های مالی</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت عمده فروشی حبیب درویش
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <div class="page-title">
+
+        <h2>
+            گزارش‌های مالی
+        </h2>
+
+     <button
+            type="button"
+            onclick="window.location.href='/reports-menu.html'">
+
+            📊 گزارشات
+
+        </button>
+
+    </div>
+
+
+    <!-- فیلتر تاریخ -->
+
+    <div class="form-container">
+
+        <h3>
+            بازه گزارش
+        </h3>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label for="fromDate">
+                    از تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="fromDate">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="toDate">
+                    تا تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="toDate">
+
+            </div>
+
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button
+                type="button"
+                id="generateReportBtn">
+
+                📊 نمایش گزارش
+
+            </button>
+
+
+            <button
+                type="button"
+                id="todayBtn">
+
+                امروز
+
+            </button>
+
+
+            <button
+                type="button"
+                id="thisMonthBtn">
+
+                این ماه
+
+            </button>
+
+
+            <button
+                type="button"
+                id="clearDateBtn"
+                class="cancel-btn">
+
+                همه
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- کارت‌های مالی -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                🛒
+            </div>
+
+            <h3>
+                فروش کل
+            </h3>
+
+            <p id="totalSales">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                🏷️
+            </div>
+
+            <h3>
+                تخفیف
+            </h3>
+
+            <p id="totalDiscount">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                💵
+            </div>
+
+            <h3>
+                فروش خالص
+            </h3>
+
+            <p id="netSales">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📦
+            </div>
+
+            <h3>
+                بهای تمام‌شده
+            </h3>
+
+            <p id="costOfGoodsSold">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📈
+            </div>
+
+            <h3>
+                سود ناخالص
+            </h3>
+
+            <p id="grossProfit">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                💸
+            </div>
+
+            <h3>
+                هزینه‌ها
+            </h3>
+
+            <p id="totalExpenses">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                💰
+            </div>
+
+            <h3>
+                سود خالص
+            </h3>
+
+            <p id="netProfit">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                🏦
+            </div>
+
+            <h3>
+                موجودی صندوق
+            </h3>
+
+            <p id="cashBalance">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- آمار تعداد -->
+
+    <div class="form-container">
+
+        <h3>
+            آمار
+        </h3>
+
+
+        <div class="summary-row">
+
+            <span>
+                تعداد فاکتورهای فروش:
+            </span>
+
+            <strong id="salesCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                تعداد هزینه‌ها:
+            </span>
+
+            <strong id="expensesCount">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+<!-- =========================
+     جزئیات فروش‌ها
+========================== -->
+
+<div class="table-container">
+
+    <h3>
+        جزئیات فروش‌ها
+    </h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>شماره فاکتور</th>
+                <th>مشتری</th>
+                <th>مبلغ</th>
+                <th>تخفیف</th>
+                <th>پرداختی</th>
+                <th>تاریخ</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="reportSalesBody">
+
+            <tr>
+
+                <td colspan="6">
+                    در حال دریافت...
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<!-- =========================
+     جزئیات خریدها
+========================== -->
+
+<div class="table-container">
+
+    <h3>
+        جزئیات خریدها
+    </h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>شماره خرید</th>
+                <th>فروشنده</th>
+                <th>مبلغ</th>
+                <th>پرداختی</th>
+                <th>باقی‌مانده</th>
+                <th>تاریخ</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="reportPurchasesBody">
+
+            <tr>
+
+                <td colspan="6">
+                    در حال دریافت...
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<!-- =========================
+     جزئیات برگشت‌ها
+========================== -->
+
+<div class="table-container">
+
+    <h3>
+        جزئیات برگشت‌ها
+    </h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>نوع</th>
+                <th>شماره فاکتور</th>
+                <th>طرف حساب</th>
+                <th>مبلغ</th>
+                <th>بازپرداخت</th>
+                <th>تاریخ</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="reportReturnsBody">
+
+            <tr>
+
+                <td colspan="6">
+                    در حال دریافت...
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+    <!-- پیام -->
+
+
+    <div
+        id="reportMessage"
+        style="margin-top:20px;">
+    </div>
+
+</main>
+
+
+<script src="/js/reports.js"></script>
+
+</body>
+
+</html>

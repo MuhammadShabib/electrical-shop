@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        گزارش موجودی و ارزش انبار
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+</head>
+
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- عنوان -->
+
+    <div class="page-title">
+
+        <h2>
+            گزارش موجودی و ارزش انبار
+        </h2>
+
+    
+
+            <button
+                type="button"
+                onclick="window.location.href='/reports-menu.html'">
+                ← گزارشات
+            </button>
+
+
+
+    </div>
+
+
+    <!-- کارت‌های خلاصه -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📦
+            </div>
+
+            <h3>
+                تعداد دواها
+            </h3>
+
+            <p id="productCount">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                🔢
+            </div>
+
+            <h3>
+                تعداد کل موجودی
+            </h3>
+
+            <p id="totalStock">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                💰
+            </div>
+
+            <h3>
+                ارزش خرید انبار
+            </h3>
+
+            <p id="inventoryCostValue">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                💵
+            </div>
+
+            <h3>
+                ارزش فروش انبار
+            </h3>
+
+            <p id="inventorySaleValue">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📈
+            </div>
+
+            <h3>
+                سود احتمالی
+            </h3>
+
+            
+
+            <p id="potentialProfit">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- جدول -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        کد دوا
+                    </th>
+
+                    <th>
+                        نام دوا
+                    </th>
+
+                    <th>
+                        واحد
+                    </th>
+
+                    <th>
+                        موجودی
+                    </th>
+
+                    <th>
+                        قیمت خرید
+                    </th>
+
+                    <th>
+                        قیمت فروش
+                    </th>
+
+                    <th>
+                        ارزش خرید
+                    </th>
+
+                    <th>
+                        ارزش فروش
+                    </th>
+
+                    <th>
+                        سود احتمالی
+                    </th>
+
+<th>
+    عملیات
+</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="inventoryReportBody">
+
+                <tr>
+
+                    <td colspan="11">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div
+        id="message"
+        style="margin-top:20px;">
+    </div>
+
+
+</main>
+
+
+<script src="/js/inventory-report.js"></script>
+
+</body>
+
+</html>

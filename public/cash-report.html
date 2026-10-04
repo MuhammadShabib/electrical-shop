@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>گزارش صندوق</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        .print-report-header {
+            display: none;
+        }
+
+        @media print {
+            .header,
+            .page-title button,
+            .report-filters,
+            .report-actions,
+            .no-print {
+                display: none !important;
+            }
+
+            .print-report-header {
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #000;
+            }
+
+            .print-report-header h2 {
+                margin: 0 0 5px;
+            }
+
+            .print-report-header p {
+                margin: 0;
+            }
+
+            .container {
+                width: 100%;
+                max-width: none;
+            }
+
+            .form-container {
+                break-inside: avoid;
+            }
+
+            .table-container {
+                overflow: visible;
+            }
+
+            table {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <style>
+
+    /* =========================
+       خلاصه صندوق
+    ========================= */
+
+    .cash-summary-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                auto-fit,
+                minmax(180px, 1fr)
+            );
+
+        gap: 15px;
+
+        margin-top: 20px;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .cash-summary-card {
+
+        padding: 18px;
+
+        border: 1px solid #ddd;
+
+        border-radius: 10px;
+
+        background: #fff;
+
+        text-align: center;
+
+    }
+
+
+    .cash-summary-card span {
+
+        display: block;
+
+        margin-bottom: 10px;
+
+        font-size: 14px;
+
+    }
+
+
+    .cash-summary-card strong {
+
+        display: block;
+
+        font-size: 22px;
+
+        margin-bottom: 6px;
+
+    }
+
+
+    .cash-summary-card small {
+
+        font-size: 13px;
+
+    }
+
+
+    .cash-summary-card.main-balance {
+
+        border-width: 2px;
+
+    }
+
+
+    .cash-summary-details {
+
+        border-top: 1px solid #ddd;
+
+        padding-top: 10px;
+
+    }
+
+
+    @media print {
+
+        .cash-summary-grid {
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 10px;
+
+        }
+
+
+        .cash-summary-card {
+
+            padding: 10px;
+
+        }
+
+
+        .cash-summary-card strong {
+
+            font-size: 17px;
+
+        }
+
+    }
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <h1>سیستم مدیریت دواخانه</h1>
+</header>
+
+<main class="container">
+
+    <div class="page-title">
+        <h2>💵 گزارش صندوق</h2>
+
+        <div>
+            <button
+                type="button"
+                onclick="window.location.href='/reports-menu.html'">
+                ← گزارشات
+            </button>
+        </div>
+    </div>
+
+    <div class="print-report-header">
+        <h2>گزارش صندوق</h2>
+        <p id="printDateRange">همه تراکنش‌ها</p>
+    </div>
+
+    <!-- فیلتر گزارش -->
+    <div class="form-container report-filters">
+
+        <h3>فیلتر گزارش</h3>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label for="fromDate">از تاریخ</label>
+                <input type="date" id="fromDate">
+            </div>
+
+            <div class="form-group">
+                <label for="toDate">تا تاریخ</label>
+                <input type="date" id="toDate">
+            </div>
+
+        </div>
+
+        <div class="form-buttons report-actions" style="margin-top:20px;">
+
+            <button type="button" id="generateReportBtn">
+                نمایش گزارش
+            </button>
+
+            <button type="button" id="todayBtn">
+                امروز
+            </button>
+
+            <button type="button" id="thisMonthBtn">
+                این ماه
+            </button>
+
+            <button type="button" id="clearDateBtn" class="cancel-btn">
+                همه
+            </button>
+
+            <button type="button" id="printReportBtn">
+                🖨 چاپ
+            </button>
+
+        </div>
+
+        <div
+            id="reportMessage"
+            style="margin-top:20px;">
+        </div>
+
+    </div>
+
+    <!-- =========================
+     خلاصه صندوق
+========================= -->
+
+<div class="form-container cash-summary">
+
+    <h3>
+        خلاصه صندوق
+    </h3>
+
+
+    <!-- وضعیت اصلی صندوق -->
+
+    <div class="cash-summary-grid">
+
+        <div class="cash-summary-card">
+
+            <span>
+                موجودی اول بازه
+            </span>
+
+            <strong id="openingBalance">
+                0
+            </strong>
+
+            <small class="currency-label">
+                AFN
+            </small>
+
+        </div>
+
+
+        <div class="cash-summary-card">
+
+            <span>
+                مجموع ورود پول
+            </span>
+
+            <strong id="totalInflow">
+                0
+            </strong>
+
+            <small class="currency-label">
+                AFN
+            </small>
+
+        </div>
+
+
+        <div class="cash-summary-card">
+
+            <span>
+                مجموع خروج پول
+            </span>
+
+            <strong id="totalOutflow">
+                0
+            </strong>
+
+            <small class="currency-label">
+                AFN
+            </small>
+
+        </div>
+
+
+        <div class="cash-summary-card">
+
+            <span>
+                خالص تغییر صندوق
+            </span>
+
+            <strong id="netChange">
+                0
+            </strong>
+
+            <small class="currency-label">
+                AFN
+            </small>
+
+        </div>
+
+
+        <div class="cash-summary-card main-balance">
+
+            <span>
+                موجودی پایان بازه
+            </span>
+
+            <strong id="closingBalance">
+                0
+            </strong>
+
+            <small class="currency-label">
+                AFN
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- جزئیات تراکنش‌ها -->
+
+    <div class="cash-summary-details">
+
+        <div class="summary-row">
+
+            <span>
+                فروش:
+            </span>
+
+            <strong id="totalSales">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                دریافت از مشتری:
+            </span>
+
+            <strong id="totalCustomerPayments">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                خرید:
+            </span>
+
+            <strong id="totalPurchases">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                پرداخت به شرکت:
+            </span>
+
+            <strong id="totalSupplierPayments">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                هزینه‌ها:
+            </span>
+
+            <strong id="totalExpenses">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                برداشت:
+            </span>
+
+            <strong id="totalWithdrawals">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                برگشت فروش:
+            </span>
+
+            <strong id="totalSaleReturns">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                تعداد تراکنش‌ها:
+            </span>
+
+            <strong id="transactionCount">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- جدول تراکنش‌ها -->
+    <div class="table-container">
+
+        <h3>تراکنش‌های صندوق</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>نوع</th>
+                    <th>مبلغ</th>
+                    <th>ورود</th>
+                    <th>خروج</th>
+                    <th>توضیحات</th>
+                    <th>تاریخ</th>
+                </tr>
+            </thead>
+
+            <tbody id="cashReportBody">
+                <tr>
+                    <td colspan="7">
+                        در حال دریافت اطلاعات...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</main>
+
+<script src="/js/system-settings.js"></script>
+<script src="/js/cash-report.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        گزارش سود دواها
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+</head>
+
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- عنوان -->
+
+    <div class="page-title">
+
+        <h2>
+            گزارش سود بر اساس دوا
+        </h2>
+
+    <button
+                type="button"
+                onclick="window.location.href='/reports-menu.html'">
+                ← گزارشات
+            </button>
+
+
+    </div>
+
+
+    <!-- فیلتر تاریخ -->
+
+    <div class="form-container">
+
+        <h3>
+            بازه گزارش
+        </h3>
+
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label for="fromDate">
+                    از تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="fromDate">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="toDate">
+                    تا تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="toDate">
+
+            </div>
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button
+                type="button"
+                id="generateBtn">
+
+                📊 نمایش گزارش
+
+            </button>
+
+
+            <button
+                type="button"
+                id="todayBtn">
+
+                امروز
+
+            </button>
+
+
+            <button
+                type="button"
+                id="thisMonthBtn">
+
+                این ماه
+
+            </button>
+
+
+            <button
+                type="button"
+                id="clearBtn"
+                class="cancel-btn">
+
+                همه
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- خلاصه -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📦
+            </div>
+
+            <h3>
+                تعداد دواها
+            </h3>
+
+            <p id="productCount">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                🛒
+            </div>
+
+            <h3>
+                مجموع فروش
+            </h3>
+
+            <p id="totalSales">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                💵
+            </div>
+
+            <h3>
+                بهای تمام‌شده
+            </h3>
+
+            <p id="totalCost">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📈
+            </div>
+
+            <h3>
+                سود کل
+            </h3>
+
+            <p id="totalProfit">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- جدول سود دواها -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        کد دوا
+                    </th>
+
+                    <th>
+                        نام دوا
+                    </th>
+
+                    <th>
+                        واحد
+                    </th>
+
+                    <th>
+                        تعداد فروش
+                    </th>
+
+                    <th>
+                        مجموع فروش
+                    </th>
+
+                    <th>
+                        بهای تمام‌شده
+                    </th>
+
+                    <th>
+                        سود
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="productProfitBody">
+
+                <tr>
+
+                    <td colspan="8">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div
+        id="message"
+        style="margin-top:20px;">
+    </div>
+
+
+</main>
+
+
+<script src="/js/product-profit.js"></script>
+
+</body>
+
+</html>

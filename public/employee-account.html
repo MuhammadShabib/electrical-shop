@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html
+    lang="fa"
+    dir="rtl"
+>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        حساب کارمند
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+    <style>
+
+        .employee-info {
+            margin-bottom: 20px;
+        }
+
+        .employee-info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .employee-info-item {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .employee-info-item span {
+            display: block;
+            margin-bottom: 7px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        .employee-info-item strong {
+            display: block;
+            font-size: 16px;
+        }
+
+        .balance-credit {
+            color: #16a34a;
+        }
+
+        .balance-debit {
+            color: #dc2626;
+        }
+
+        .balance-settled {
+            color: #2563eb;
+        }
+
+        @media (max-width: 900px) {
+
+            .employee-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .employee-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media print {
+
+            @page {
+                size: A4;
+                margin: 12mm;
+            }
+
+            body {
+                background: #fff !important;
+                color: #000 !important;
+            }
+
+            .header,
+            .page-title,
+            .account-actions,
+            .transaction-form-container,
+            button {
+                display: none !important;
+            }
+
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .employee-info,
+            .balance-card,
+            .table-container {
+                box-shadow: none !important;
+                border: none !important;
+            }
+
+            .employee-info-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+
+            .account-summary {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+
+            table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+            }
+
+            table th,
+            table td {
+                border: 1px solid #000 !important;
+                padding: 7px !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+
+<main class="container">
+
+<div class="print-report-header">
+
+    <h2>گزارش حساب کارمند</h2>
+
+    <p>
+        سیستم مدیریت دواخانه
+    </p>
+
+</div>
+    <!-- =========================
+         عنوان
+    ========================== -->
+
+    <div class="page-title">
+
+        <h2>
+            👨‍💼 حساب کارمند
+        </h2>
+
+        <div
+            style="
+                display:flex;
+                gap:10px;
+            "
+        >
+
+            <button
+                type="button"
+                onclick="window.print()"
+            >
+                🖨 چاپ گزارش
+            </button>
+
+
+            <button
+                type="button"
+                onclick="window.location.href='/employees.html'"
+            >
+                👨‍💼 کارمندان
+            </button>
+
+
+            <button
+                type="button"
+                onclick="window.location.href='/'"
+            >
+                🏠 داشبورد
+            </button>
+
+        </div>
+
+    </div>
+
+
+    
+
+
+    <!-- =========================
+         اطلاعات کارمند
+    ========================== -->
+
+    <div class="form-container employee-info">
+
+        <h3>
+            اطلاعات کارمند
+        </h3>
+
+        <div class="employee-info-grid">
+
+
+            <div class="employee-info-item">
+
+                <span>
+                    نام و تخلص
+                </span>
+
+                <strong id="employeeName">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="employee-info-item">
+
+                <span>
+                    شماره تلفن
+                </span>
+
+                <strong id="employeePhone">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="employee-info-item">
+
+                <span>
+                    معاش ماهانه
+                </span>
+
+                <strong id="employeeSalary">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="employee-info-item">
+
+                <span>
+                    تایم کاری
+                </span>
+
+                <strong id="employeeWorkTime">
+                    -
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         خلاصه حساب
+    ========================== -->
+
+    <div class="account-summary">
+
+
+        <div class="balance-card">
+
+            <span>
+                مجموع دبت
+            </span>
+
+            <strong id="totalDebit">
+                0
+            </strong>
+
+        </div>
+
+
+
+        <div class="balance-card">
+
+            <span>
+                مجموع کریدیت
+            </span>
+
+            <strong id="totalCredit">
+                0
+            </strong>
+
+        </div>
+
+
+
+        <div class="balance-card">
+
+            <span>
+                مانده حساب
+            </span>
+
+            <strong id="balanceAmount">
+                0
+            </strong>
+
+            <span id="balanceType">
+                تسویه
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         عملیات حساب
+    ========================== -->
+
+    <div class="account-actions">
+
+
+        <button
+            type="button"
+            class="credit-action"
+            id="addSalaryBtn"
+        >
+            💰 محاسبه معاش
+        </button>
+
+
+        <button
+            type="button"
+            class="debit-action"
+            id="addWithdrawalBtn"
+        >
+            💵 برداشت کارمند
+        </button>
+
+
+        <button
+            type="button"
+            class="debit-action"
+            id="addSalaryPaymentBtn"
+        >
+            💳 پرداخت معاش
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         فرم تراکنش
+    ========================== -->
+
+    <div
+        class="form-container transaction-form-container hidden"
+        id="transactionFormContainer"
+    >
+
+        <h3 id="transactionFormTitle">
+            ثبت تراکنش
+        </h3>
+
+
+        <form id="transactionForm">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="transactionAmount">
+                        مبلغ
+                    </label>
+
+                    <input
+                        type="number"
+                        id="transactionAmount"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+
+                </div>
+
+
+               <div id="salaryMonthContainer" style="display: none;">
+
+    <label for="salaryMonth">
+        ماه معاش
+    </label>
+
+    <div style="display: flex; gap: 10px; align-items: center;">
+
+        <input
+            type="text"
+            id="salaryMonth"
+            placeholder="مثلاً 1405/07"
+            inputmode="numeric"
+            maxlength="7"
+        >
+
+        <span
+            id="salaryMonthName"
+            style="font-weight: bold;"
+        >
+            -
+        </span>
+
+    </div>
+
+</div>
+
+
+                <div class="form-group">
+
+                    <label for="transactionDescription">
+                        شرح
+                    </label>
+
+                    <input
+                        type="text"
+                        id="transactionDescription"
+                        placeholder="مثلاً معاش ماه میزان"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+
+                <button
+                    type="submit"
+                    id="saveTransactionBtn"
+                >
+                    💾 ثبت تراکنش
+                </button>
+
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelTransactionBtn"
+                >
+                    انصراف
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- =========================
+         گردش حساب
+    ========================== -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        تاریخ
+                    </th>
+
+                    <th>
+                        شرح
+                    </th>
+
+                    <th>ماه معاش</th>
+
+                    <th>
+                        دبت
+                    </th>
+
+                    <th>
+                        کریدیت
+                    </th>
+
+                    <th>
+                        مانده
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="transactionsTableBody">
+
+                <tr>
+
+                    <td colspan="5">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</main>
+
+
+
+<script
+    src="/js/employee-account.js"
+></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        گزارش برگشت خرید
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+    <style>
+
+        .print-report-header {
+            display: none;
+        }
+
+        @media print {
+
+            @page {
+                size: A4;
+                margin: 12mm;
+            }
+
+            .header,
+            .page-title button,
+            .report-filter {
+                display: none !important;
+            }
+
+            .print-report-header {
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #000;
+            }
+
+            .print-report-header h2 {
+                margin: 0 0 5px;
+            }
+
+            .print-report-header p {
+                margin: 4px 0;
+            }
+
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .dashboard-card,
+            .table-container {
+                break-inside: avoid;
+            }
+
+            table {
+                width: 100% !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- عنوان -->
+
+    <div class="page-title">
+
+        <h2>
+            ↪️ گزارش برگشت خرید
+        </h2>
+
+        <button
+            type="button"
+            onclick="window.location.href='/reports-menu.html'">
+
+            📊 گزارشات
+
+        </button>
+
+    </div>
+
+
+    <!-- عنوان مخصوص چاپ -->
+
+    <div class="print-report-header">
+
+        <h2>
+            گزارش برگشت خرید
+        </h2>
+
+        <p>
+            سیستم مدیریت دواخانه
+        </p>
+
+        <p id="printDateRange">
+            همه برگشت‌های خرید
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         فیلتر تاریخ
+    ========================== -->
+
+    <div
+        class="form-container report-filter">
+
+        <h3>
+            بازه گزارش برگشت خرید
+        </h3>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label for="fromDate">
+                    از تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="fromDate">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="toDate">
+                    تا تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="toDate">
+
+            </div>
+
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button
+                type="button"
+                id="generateReportBtn">
+
+                📊 نمایش گزارش
+
+            </button>
+
+
+            <button
+                type="button"
+                id="todayBtn">
+
+                امروز
+
+            </button>
+
+
+            <button
+                type="button"
+                id="thisMonthBtn">
+
+                این ماه
+
+            </button>
+
+
+            <button
+                type="button"
+                id="clearDateBtn"
+                class="cancel-btn">
+
+                همه
+
+            </button>
+
+
+            <button
+                type="button"
+                id="printReportBtn">
+
+                🖨 چاپ
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         خلاصه
+    ========================== -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                ↪️
+            </div>
+
+            <h3>
+                مجموع برگشت خرید
+            </h3>
+
+            <p id="totalReturns">
+                0 افغانی
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                🏪
+            </div>
+
+            <h3>
+                تعداد برگشت‌ها
+            </h3>
+
+            <p id="returnsCount">
+                0
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         جزئیات
+    ========================== -->
+
+    <div class="table-container">
+
+        <h3>
+            جزئیات برگشت خرید
+        </h3>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        شماره خرید
+                    </th>
+
+                    <th>
+                        شرکت
+                    </th>
+
+                    <th>
+                        مبلغ برگشت
+                    </th>
+
+                    <th>
+                        تاریخ
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="reportReturnsBody">
+
+                <tr>
+
+                    <td colspan="4">
+                        در حال دریافت...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- پیام -->
+
+    <div
+        id="reportMessage"
+        style="margin-top:20px;">
+    </div>
+
+
+</main>
+
+
+<script src="/js/purchase-returns-report.js"></script>
+
+</body>
+
+</html>

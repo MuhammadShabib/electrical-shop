@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>حساب مشتریان</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+    <div class="page-title">
+
+        <h2>
+            حساب مشتریان
+        </h2>
+
+        <div>
+
+            <button
+                type="button"
+                onclick="window.location.href='/customers.html'">
+                + مشتری جدید
+            </button>
+
+            <button
+                type="button"
+                onclick="window.location.href='/'">
+                ← بازگشت
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- جستجو -->
+
+    <div class="form-container">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>
+                    جستجوی مشتری
+                </label>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="نام یا شماره تماس..."
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- جدول مشتریان -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        نام مشتری
+                    </th>
+
+                    <th>
+                        شماره تماس
+                    </th>
+
+                    <th>
+                        بدهکار
+                    </th>
+
+                    <th>
+                        بستانکار
+                    </th>
+
+                    <th>
+                        مانده حساب
+                    </th>
+
+                    <th>
+                        وضعیت
+                    </th>
+
+                    <th>
+                        عملیات
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="customersTableBody">
+
+                <tr>
+
+                    <td colspan="8">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- خلاصه -->
+
+    <div class="form-container">
+
+        <div class="summary-row">
+
+            <span>
+                تعداد مشتریان:
+            </span>
+
+            <strong id="customerCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع بدهکاران:
+            </span>
+
+            <strong id="totalDebit">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع بستانکاران:
+            </span>
+
+            <strong id="totalCredit">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="/js/customers-list.js"></script>
+
+</body>
+
+</html>

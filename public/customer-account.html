@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>حساب مشتری</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+    <!-- اطلاعات مشتری -->
+
+    <div class="page-title">
+
+        <div>
+
+            <h2 id="customerName">
+                حساب مشتری
+            </h2>
+
+            <p id="customerPhone">
+                -
+            </p>
+
+        </div>
+
+        <button
+            onclick="goBack()"
+        >
+            ← بازگشت به مشتریان
+        </button>
+
+    </div>
+
+
+    <!-- خلاصه حساب -->
+
+    <div class="account-summary">
+
+
+        <div class="balance-card">
+
+            <span>
+                مانده حساب
+            </span>
+
+            <strong id="balanceAmount">
+                0
+            </strong>
+
+            <small id="balanceType">
+                تسویه
+            </small>
+
+        </div>
+
+
+        <div class="balance-card">
+
+            <span>
+                مجموع بدهکاری
+            </span>
+
+            <strong id="totalDebit">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="balance-card">
+
+            <span>
+                مجموع پرداخت
+            </span>
+
+            <strong id="totalCredit">
+                0
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- عملیات -->
+
+    <div class="account-actions">
+
+        <button
+            id="addDebitBtn"
+            class="debit-action"
+        >
+            + ثبت بدهی
+        </button>
+
+
+        <button
+            id="addCreditBtn"
+            class="credit-action"
+        >
+            + ثبت پرداخت
+        </button>
+<button
+    id="returnSaleBtn"
+    type="button"
+    class="credit-action"
+>
+    ↩️ برگشت دوا
+</button>
+
+    </div>
+
+
+    <!-- فرم تراکنش -->
+
+    <div
+        id="transactionFormContainer"
+        class="form-container hidden"
+    >
+
+        <h3 id="transactionFormTitle">
+            ثبت تراکنش
+        </h3>
+
+
+        <form id="transactionForm">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        نوع تراکنش
+                    </label>
+
+                    <select id="transactionType">
+
+                        <option value="debit">
+                            بدهی مشتری
+                        </option>
+
+                        <option value="credit">
+                            پرداخت مشتری
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        مبلغ
+                    </label>
+
+                    <input
+                        type="number"
+                        id="transactionAmount"
+                        min="1"
+                        required
+                        placeholder="مبلغ به افغانی"
+                    >
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <label>
+                        توضیحات
+                    </label>
+
+                    <input
+                        type="text"
+                        id="transactionDescription"
+                        placeholder="مثلاً پرداخت نقدی"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    id="saveTransactionBtn"
+                >
+                    ثبت تراکنش
+                </button>
+
+
+                <button
+                    type="button"
+                    id="cancelTransactionBtn"
+                    class="cancel-btn"
+                >
+                    انصراف
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+    <!-- گردش حساب -->
+
+    <div class="section-title">
+
+        <h3>
+            گردش حساب
+        </h3>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        تاریخ
+                    </th>
+
+                    <th>
+                        شرح
+                    </th>
+
+                    <th>
+                        بدهکار
+                    </th>
+
+                    <th>
+                        پرداخت
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="transactionsTableBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</main>
+
+
+<script src="/js/customer-account.js"></script>
+
+</body>
+
+</html>

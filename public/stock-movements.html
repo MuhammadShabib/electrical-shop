@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        گردش انبار
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+</head>
+
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت فروشگاه لوازم برق
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- عنوان -->
+
+    <div class="page-title">
+
+        <h2>
+            گردش انبار
+        </h2>
+
+        <button
+            type="button"
+            onclick="window.location.href='/'">
+
+            ← بازگشت به داشبورد
+
+        </button>
+
+    </div>
+
+
+    <!-- فیلترها -->
+
+    <div class="form-container">
+
+        <h3>
+            فیلتر گردش انبار
+        </h3>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label for="productSelect">
+                    دوا
+                </label>
+
+                <select id="productSelect">
+
+                    <option value="">
+                        همه دواها
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="fromDate">
+                    از تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="fromDate">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="toDate">
+                    تا تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="toDate">
+
+            </div>
+
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button
+                type="button"
+                id="generateBtn">
+
+                🔍 نمایش
+
+            </button>
+
+
+            <button
+                type="button"
+                id="todayBtn">
+
+                امروز
+
+            </button>
+
+
+            <button
+                type="button"
+                id="thisMonthBtn">
+
+                این ماه
+
+            </button>
+
+
+            <button
+                type="button"
+                id="clearBtn"
+                class="cancel-btn">
+
+                همه
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- خلاصه -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📋
+            </div>
+
+            <h3>
+                تعداد حرکات
+            </h3>
+
+            <p id="movementCount">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📥
+            </div>
+
+            <h3>
+                ورود به انبار
+            </h3>
+
+            <p id="totalIn">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📤
+            </div>
+
+            <h3>
+                خروج از انبار
+            </h3>
+
+            <p id="totalOut">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📦
+            </div>
+
+            <h3>
+                خالص تغییر موجودی
+            </h3>
+
+            <p id="netMovement">
+                0
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- جدول -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        دوا
+                    </th>
+
+                    <th>
+                        نوع حرکت
+                    </th>
+
+                    <th>
+                        مقدار
+                    </th>
+
+                    <th>
+                        شماره مرجع
+                    </th>
+
+                    <th>
+                        توضیحات
+                    </th>
+
+                    <th>
+                        تاریخ
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="movementsBody">
+
+                <tr>
+
+                    <td colspan="7">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div
+        id="message"
+        style="margin-top:20px;">
+    </div>
+
+
+</main>
+
+
+<script src="/js/stock-movements.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html
+    lang="fa"
+    dir="rtl"
+>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        کارمندان
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <!-- =========================
+         عنوان صفحه
+    ========================== -->
+
+    <div class="page-title">
+
+        <h2>
+            👨‍💼 کارمندان
+        </h2>
+
+        <div
+            style="
+                display:flex;
+                gap:10px;
+            "
+        >
+
+            <button
+                type="button"
+                id="addEmployeeBtn"
+            >
+                ➕ ثبت کارمند جدید
+            </button>
+
+
+            <button
+                type="button"
+                onclick="window.location.href='/'"
+            >
+                🏠 داشبورد
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         فرم کارمند
+    ========================== -->
+
+    <div
+        class="form-container hidden"
+        id="employeeFormContainer"
+    >
+
+        <h3 id="employeeFormTitle">
+            ثبت کارمند جدید
+        </h3>
+
+
+        <form id="employeeForm">
+
+
+            <input
+                type="hidden"
+                id="employeeId"
+            >
+
+
+            <div class="form-grid">
+
+
+                <!-- نام -->
+
+                <div class="form-group">
+
+                    <label for="employeeFirstName">
+                        نام کارمند
+                    </label>
+
+                    <input
+                        type="text"
+                        id="employeeFirstName"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- تخلص -->
+
+                <div class="form-group">
+
+                    <label for="employeeLastName">
+                        تخلص کارمند
+                    </label>
+
+                    <input
+                        type="text"
+                        id="employeeLastName"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- تلفن -->
+
+                <div class="form-group">
+
+                    <label for="employeePhone">
+                        شماره تلفن
+                    </label>
+
+                    <input
+                        type="text"
+                        id="employeePhone"
+                    >
+
+                </div>
+
+
+
+                <!-- معاش -->
+
+                <div class="form-group">
+
+                    <label for="employeeSalary">
+                        معاش
+                    </label>
+
+                    <input
+                        type="number"
+                        id="employeeSalary"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- تایم کاری -->
+
+                <div class="form-group">
+
+                    <label for="employeeWorkTime">
+                        تایم کاری
+                    </label>
+
+                    <input
+                        type="text"
+                        id="employeeWorkTime"
+                        placeholder="مثلاً ۸ صبح تا ۴ عصر"
+                    >
+
+                </div>
+
+
+
+                <!-- آدرس -->
+
+                <div class="form-group">
+
+                    <label for="employeeAddress">
+                        آدرس
+                    </label>
+
+                    <input
+                        type="text"
+                        id="employeeAddress"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="form-buttons">
+
+
+                <button
+                    type="submit"
+                    id="saveEmployeeBtn"
+                >
+                    💾 ذخیره کارمند
+                </button>
+
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelEmployeeBtn"
+                >
+                    انصراف
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- =========================
+         جستجو
+    ========================== -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="employeeSearch"
+            placeholder="جستجوی نام یا شماره تلفن کارمند..."
+        >
+
+    </div>
+
+
+
+    <!-- =========================
+         جدول کارمندان
+    ========================== -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        نام و تخلص
+                    </th>
+
+                    <th>
+                        شماره تلفن
+                    </th>
+
+                    <th>
+                        آدرس
+                    </th>
+
+                    <th>
+                        معاش
+                    </th>
+
+                    <th>
+                        تایم کاری
+                    </th>
+
+                    <th>
+                        وضعیت
+                    </th>
+
+                    <th>
+                        عملیات
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="employeesTableBody">
+
+                <tr>
+
+                    <td colspan="7">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</main>
+
+
+
+<script
+    src="/js/employees.js"
+></script>
+
+
+</body>
+
+</html>

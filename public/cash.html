@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>صندوق</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>سیستم مدیریت دواخانه</h1>
+</header>
+
+<main class="container">
+
+    <div class="page-title">
+
+        <h2>صندوق</h2>
+
+        <button
+            type="button"
+            onclick="window.location.href='/'">
+            ← بازگشت
+        </button>
+
+    </div>
+
+
+    <!-- موجودی فعلی -->
+
+    <div class="form-container">
+
+        <div class="summary-row">
+
+            <span>
+                موجودی فعلی صندوق:
+            </span>
+
+            <strong id="cashBalance">
+                0
+            </strong>
+
+         <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- خلاصه صندوق -->
+
+    <div class="form-container">
+
+        <h3>
+            خلاصه تراکنش‌ها
+        </h3>
+
+
+        <div class="summary-row">
+
+            <span>
+                فروش:
+            </span>
+
+            <strong id="totalSales">
+                0
+            </strong>
+
+        <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                دریافت از مشتریان:
+            </span>
+
+            <strong id="totalCustomerPayments">
+                0
+            </strong>
+
+        <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                پرداخت به شرکت ها:
+            </span>
+
+            <strong id="totalSupplierPayments">
+                0
+            </strong>
+
+          <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                خرید:
+            </span>
+
+            <strong id="totalPurchases">
+                0
+            </strong>
+
+         <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                هزینه‌ها:
+            </span>
+
+            <strong id="totalExpenses">
+                0
+            </strong>
+
+         <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                برداشت:
+            </span>
+
+            <strong id="totalWithdrawals">
+                0
+            </strong>
+
+       <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- جدول تراکنش‌ها -->
+
+    <div class="table-container">
+
+        <h3>
+            تراکنش‌های صندوق
+        </h3>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        نوع
+                    </th>
+
+                    <th>
+                        مبلغ
+                    </th>
+
+                    <th>
+                        توضیحات
+                    </th>
+
+                    <th>
+                        تاریخ
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="cashTransactionsBody">
+
+                <tr>
+
+                    <td colspan="5">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<script src="/js/system-settings.js"></script>
+<script src="/js/cash.js"></script>
+
+</body>
+</html>

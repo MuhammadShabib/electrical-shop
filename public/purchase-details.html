@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>جزئیات خرید</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+    <!-- عنوان -->
+
+    <div class="page-title">
+
+        <h2>
+            جزئیات خرید
+        </h2>
+
+        <div>
+
+            <button
+                type="button"
+                onclick="window.print()">
+                🖨 چاپ
+            </button>
+
+  <button
+        type="button"
+        id="returnPurchaseBtn">
+        ↩️ برگشت دوا
+    </button>
+
+            <button
+                type="button"
+                onclick="window.location.href='/purchases-list.html'">
+                ← بازگشت
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- اطلاعات خرید -->
+
+    <div class="form-container">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>
+                    شماره خرید
+                </label>
+
+                <strong id="invoiceNumber">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    تاریخ خرید
+                </label>
+
+                <strong id="purchaseDate">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    شرکت
+                </label>
+
+                <strong id="supplierName">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    شماره تماس
+                </label>
+
+                <strong id="supplierPhone">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- دواهای خرید -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        کد دوا
+                    </th>
+
+                    <th>
+                        دوا
+                    </th>
+
+                    <th>
+                        واحد
+                    </th>
+
+                    <th>
+                        تعداد
+                    </th>
+
+                    <th>
+                        قیمت خرید
+                    </th>
+
+                    <th>
+                        جمع
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="purchaseItemsBody">
+
+                <tr>
+
+                    <td colspan="7">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- خلاصه -->
+
+    <div class="form-container purchase-summary">
+
+        <div class="summary-row">
+
+            <span>
+                مبلغ کل:
+            </span>
+
+            <strong id="totalAmount">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مبلغ پرداختی:
+            </span>
+
+            <strong id="paidAmount">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                باقی‌مانده:
+            </span>
+
+            <strong id="remainingAmount">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                توضیحات:
+            </span>
+
+            <strong id="description">
+                -
+            </strong>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="/js/purchase-details.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>برداشت از صندوق</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <div class="page-title">
+
+        <h2>
+            برداشت از صندوق
+        </h2>
+
+        <button
+            type="button"
+            onclick="window.location.href='/'">
+
+            🏠 داشبورد
+
+        </button>
+
+    </div>
+
+
+    <!-- فرم برداشت -->
+
+    <div class="form-container">
+
+        <h3>
+            ثبت برداشت
+        </h3>
+
+
+        <form id="withdrawalForm">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="amount">
+                        مبلغ برداشت
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amount"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="مبلغ برداشت"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        توضیحات
+                    </label>
+
+                    <input
+                        type="text"
+                        id="description"
+                        maxlength="255"
+                        placeholder="مثلاً برداشت شخصی">
+
+                </div>
+
+            </div>
+
+
+            <!-- موجودی فعلی -->
+
+            <div style="margin-top:20px;">
+
+                موجودی فعلی صندوق:
+
+                <strong id="cashBalance">
+                    0
+                </strong>
+
+                افغانی
+
+            </div>
+
+
+            <div
+                id="message"
+                style="margin-top:20px;">
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button type="submit">
+
+                    💸 ثبت برداشت
+
+                </button>
+
+
+                <button
+                    type="reset"
+                    class="cancel-btn">
+
+                    پاک کردن
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</main>
+
+
+<script src="/js/withdrawal.js"></script>
+
+</body>
+
+</html>

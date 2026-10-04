@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        داشبورد سیستم مدیریت دواخانه
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <h1 id="systemTitle">
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+<!-- =========================
+     هشدار تاریخ انقضا
+========================= -->
+
+<div
+    id="expiryWarning"
+    class="expiry-warning hidden">
+
+    <strong id="expiryWarningTitle">
+        ⚠️ هشدار انقضا
+    </strong>
+
+    <span id="expiryWarningMessage">
+        -
+    </span>
+
+    <span>
+        تا
+        <input
+            type="number"
+            id="expiryWarningDays"
+            min="1"
+            value="30"
+            style="width:70px;"
+        >
+        روز آینده
+    </span>
+
+    <button
+        type="button"
+        id="expiryWarningRefresh">
+        بررسی
+    </button>
+
+</div>
+
+    <div class="page-title">
+
+        <h2>
+            داشبورد اصلی
+        </h2>
+
+    </div>
+
+
+    <!-- =========================
+         بخش عملیات اصلی
+    ========================== -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- لیست دوا ها -->
+
+        <a
+            href="/products.html"
+            class="dashboard-card"
+            data-role="admin,seller,accountant"
+        >
+
+            <div class="dashboard-icon">
+                📦
+            </div>
+
+            <h3>
+                لیست دوا ها
+            </h3>
+
+            <p>
+                مدیریت دواها و موجودی
+            </p>
+
+        </a>
+
+<!-- دواهای تاریخ کم -->
+
+<!-- <a
+    href="/expiring-medicines.html"
+    class="dashboard-card"
+    data-role="admin,accountant"
+>
+
+    <div class="dashboard-icon">
+        ⚠️
+    </div>
+
+    <h3>
+        دواهای تاریخ کم
+    </h3>
+
+    <p>
+        مشاهده دواهای نزدیک به تاریخ انقضا
+    </p>
+
+</a> -->
+
+<!-- مصارف -->
+<a
+    href="/expenses.html"
+    class="dashboard-card"
+>
+    <div class="dashboard-icon">💸</div>
+
+    <h3>
+        مصارف
+    </h3>
+
+    <p>
+        ثبت و مدیریت مصارف دواخانه
+    </p>
+</a>
+
+        <!-- فروش -->
+
+        <a
+            href="/sales.html"
+            class="dashboard-card"
+            data-role="admin,seller,accountant"
+        >
+
+            <div class="dashboard-icon">
+                🛒
+            </div>
+
+            <h3>
+                فروش
+            </h3>
+
+            <p>
+                ثبت و مدیریت فروش
+            </p>
+
+        </a>
+
+
+        <!-- خرید -->
+
+        <a
+            href="/purchases.html"
+            class="dashboard-card"
+            data-role="admin,accountant"
+        >
+
+            <div class="dashboard-icon">
+                📥
+            </div>
+
+            <h3>
+                خرید
+            </h3>
+
+            <p>
+                ثبت و مدیریت خرید
+            </p>
+
+        </a>
+
+<!-- کارمندان -->
+<a
+    href="/employees.html"
+    class="dashboard-card"
+    data-role="admin"
+>
+    <div class="dashboard-icon">
+        👨‍💼
+    </div>
+
+    <h3>
+        کارمندان
+    </h3>
+
+    <p>
+        مدیریت کارمندان سیستم
+    </p>
+</a>
+
+
+        <!-- مشتریان -->
+
+        <a
+            href="/customers.html"
+            class="dashboard-card"
+            data-role="admin,seller,accountant"
+        >
+
+            <div class="dashboard-icon">
+                👥
+            </div>
+
+            <h3>
+                مشتریان
+            </h3>
+
+            <p>
+                مدیریت مشتریان و حساب‌ها
+            </p>
+
+        </a>
+
+
+        <!-- شرکت ها -->
+
+        <a
+            href="/suppliers.html"
+            class="dashboard-card"
+            data-role="admin,accountant"
+        >
+
+            <div class="dashboard-icon">
+                🏢
+            </div>
+
+            <h3>
+                شرکت ها
+            </h3>
+
+            <p>
+                مدیریت شرکت ها و حساب‌ها
+            </p>
+
+        </a>
+
+
+        <!-- حساب شرکت -->
+
+        <!-- <a
+            href="/suppliers.html"
+            class="dashboard-card"
+            data-role="admin,accountant"
+        >
+
+            <div class="dashboard-icon">
+                📒
+            </div>
+
+            <h3>
+                حساب شرکت
+            </h3>
+
+            <p>
+                مشاهده و مدیریت حساب شرکت
+            </p>
+
+        </a> -->
+
+
+        <!-- برگشت خرید -->
+
+        <a
+            href="/purchase-return.html"
+            class="dashboard-card"
+            data-role="admin,accountant"
+        >
+
+            <div class="dashboard-icon">
+                🔄
+            </div>
+
+            <h3>
+                برگشت خرید
+            </h3>
+
+            <p>
+                برگشت دوا به شرکت
+            </p>
+
+        </a>
+
+
+        <!-- برگشت فروش -->
+
+        <a
+            href="/sale-return.html"
+            class="dashboard-card"
+            data-role="admin,seller,accountant"
+        >
+
+            <div class="dashboard-icon">
+                ↩️
+            </div>
+
+            <h3>
+                برگشت فروش
+            </h3>
+
+            <p>
+                برگشت دوا از مشتری
+            </p>
+
+        </a>
+
+
+        <!-- صندوق -->
+
+        <a
+            href="/cash.html"
+            class="dashboard-card"
+            data-role="admin,accountant"
+        >
+
+            <div class="dashboard-icon">
+                💰
+            </div>
+
+            <h3>
+                صندوق
+            </h3>
+
+            <p>
+                موجودی و تراکنش‌های صندوق
+            </p>
+
+        </a>
+
+<!-- گزارشات -->
+<a
+    href="/reports-menu.html"
+    class="dashboard-card"
+>
+    <div class="dashboard-icon">
+        📊
+    </div>
+
+    <h3>
+        گزارشات
+    </h3>
+
+    <p>
+        گزارش‌گیری از بخش‌های مختلف سیستم
+    </p>
+</a>
+
+
+        <!-- گزارش سود دواها -->
+
+        <!-- <a
+            href="/product-profit.html"
+            class="dashboard-card"
+            data-role="admin,accountant"
+        >
+
+            <div class="dashboard-icon">
+                📈
+            </div>
+
+            <h3>
+                سود دواها
+            </h3>
+
+            <p>
+                گزارش فروش و سود هر دوا
+            </p>
+
+        </a> -->
+
+
+        <!-- گزارش موجودی -->
+
+        <!-- <a
+            href="/inventory-report.html"
+            class="dashboard-card"
+            data-role="admin,accountant"
+        >
+
+            <div class="dashboard-icon">
+                📦
+            </div>
+
+            <h3>
+                گزارش موجودی
+            </h3>
+
+            <p>
+                موجودی و ارزش فعلی انبار
+            </p>
+
+        </a> -->
+
+
+        <!-- گردش انبار -->
+
+        <a
+            href="/stock-movements.html"
+            class="dashboard-card"
+            data-role="admin,accountant"
+        >
+
+            <div class="dashboard-icon">
+                🔄
+            </div>
+
+            <h3>
+                گردش انبار
+            </h3>
+
+            <p>
+                مشاهده ورود و خروج دواها
+            </p>
+
+        </a>
+
+
+        <!-- تنظیمات سیستم -->
+
+        <a
+            href="/settings.html"
+            class="dashboard-card"
+            data-role="admin"
+        >
+
+            <div class="dashboard-icon">
+                ⚙️
+            </div>
+
+            <h3>
+                تنظیمات سیستم
+            </h3>
+
+            <p>
+                تنظیمات و پشتیبان‌گیری
+            </p>
+
+        </a>
+
+
+    </div>
+
+
+    <!-- =========================
+         دسترسی سریع
+    ========================== -->
+
+    <div class="form-container dashboard-quick">
+
+        <h3>
+            دسترسی سریع
+        </h3>
+
+
+        <div class="quick-links">
+
+
+            <!-- دریافت از مشتری -->
+
+            <a
+                href="/customer-payment.html"
+                data-role="admin,seller,accountant"
+            >
+                💵 دریافت از مشتری
+            </a>
+
+
+            <!-- پرداخت به شرکت -->
+
+            <a
+                href="/supplier-payment.html"
+                data-role="admin,accountant"
+            >
+                💸 پرداخت به شرکت
+            </a>
+
+
+            <!-- لیست فروش‌ها -->
+
+            <a
+                href="/sales-list.html"
+                data-role="admin,seller,accountant"
+            >
+                🧾 لیست فروش‌ها
+            </a>
+
+
+            <!-- لیست خریدها -->
+
+            <a
+                href="/purchases-list.html"
+                data-role="admin,accountant"
+            >
+                📋 لیست خریدها
+            </a>
+
+
+            <!-- برگشت خرید -->
+
+            <a
+                href="/purchase-return.html"
+                data-role="admin,accountant"
+            >
+                ↩️ برگشت خرید
+            </a>
+
+
+            <!-- برگشت فروش -->
+
+            <a
+                href="/sale-return.html"
+                data-role="admin,seller,accountant"
+            >
+                ↩️ برگشت فروش
+            </a>
+
+
+            <!-- لیست مشتریان -->
+
+            <a
+                href="/customers-list.html"
+                data-role="admin,seller,accountant"
+            >
+                👥 لیست مشتریان
+            </a>
+
+
+            <!-- گردش صندوق -->
+
+            <a
+                href="/cash.html"
+                data-role="admin,accountant"
+            >
+                💰 گردش صندوق
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<script src="/js/system-settings.js"></script>
+<script src="/js/page-auth.js"></script>
+
+
+</body>
+
+</html>

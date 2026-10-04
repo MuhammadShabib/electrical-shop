@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ثبت خرید</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+
+    .product-search-group {
+        position: relative;
+    }
+
+    .product-search-results {
+        position: absolute;
+        z-index: 1000;
+        width: 100%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        margin-top: 4px;
+        max-height: 250px;
+        overflow-y: auto;
+        display: none;
+    }
+
+    .product-search-item {
+        padding: 10px 12px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+    }
+
+    .product-search-item:last-child {
+        border-bottom: none;
+    }
+
+    .product-search-item:hover {
+        background: #f5f5f5;
+    }
+
+    .product-search-item strong {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .product-search-item small {
+        color: #666;
+    }
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+    <!-- عنوان صفحه -->
+
+  <div class="page-title">
+
+    <h2>
+        ثبت خرید از شرکت
+    </h2>
+
+    <div style="display: flex; gap: 10px;">
+
+        <button
+            type="button"
+            onclick="window.location.href='/'"
+        >
+            🏠 داشبورد
+        </button>
+
+        <button
+            type="button"
+            onclick="goBack()"
+        >
+            ← بازگشت
+        </button>
+
+    </div>
+
+</div>
+
+
+    <!-- اطلاعات خرید -->
+
+    <div class="form-container">
+
+        <div class="form-grid">
+
+            <!-- شرکت -->
+
+            <div class="form-group">
+
+                <label>
+                    شرکت
+                </label>
+
+                <select id="supplierSelect">
+
+                    <option value="">
+                        شرکت متفرقه
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- توضیحات -->
+
+            <div class="form-group">
+
+                <label>
+                    توضیحات
+                </label>
+
+                <input
+                    type="text"
+                    id="purchaseDescription"
+                    placeholder="توضیحات خرید"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- افزودن دوا -->
+
+    <div class="form-container">
+
+        <h3>
+            افزودن دوا
+        </h3>
+
+
+        <div class="form-grid">
+
+            <!-- دوا -->
+
+           <div class="form-group">
+
+    <label for="productSearch">
+        دوا
+    </label>
+
+    <input
+        type="text"
+        id="productSearch"
+        placeholder="نام دوا یا کد را جستجو/اسکن کنید..."
+        autocomplete="off"
+    >
+
+    <!-- شناسه دوا برای JavaScript -->
+    <input
+        type="hidden"
+        id="productSelect"
+    >
+
+    <!-- نتایج جستجو -->
+    <div
+        id="productSearchResults"
+        class="product-search-results">
+    </div>
+
+</div>
+
+
+            <!-- تعداد -->
+
+            <div class="form-group">
+
+                <label>
+                    تعداد
+                </label>
+
+                <input
+                    type="number"
+                    id="productQuantity"
+                    min="0.001"
+                    step="0.001"
+                    value="1"
+                >
+
+            </div>
+
+
+            <!-- قیمت خرید -->
+
+            <div class="form-group">
+
+                <label>
+                    قیمت خرید
+                </label>
+
+                <input
+                    type="number"
+                    id="productPrice"
+                    min="0"
+                    step="0.01"
+                    placeholder="قیمت خرید"
+                >
+
+            </div>
+
+
+            <!-- افزودن -->
+
+            <div class="form-group">
+
+                <label>
+                    &nbsp;
+                </label>
+
+                <button
+                    type="button"
+                    id="addProductBtn"
+                >
+                    + افزودن به خرید
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- اقلام خرید -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        دوا
+                    </th>
+
+                    <th>
+                        تعداد
+                    </th>
+
+                    <th>
+                        قیمت خرید
+                    </th>
+
+                    <th>
+                        جمع
+                    </th>
+
+                    <th>
+                        عملیات
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="purchaseItemsBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- خلاصه خرید -->
+
+    <div class="form-container sale-summary">
+
+        <div class="summary-row">
+
+            <span>
+                مجموع خرید:
+            </span>
+
+            <strong id="totalAmount">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <label for="paidAmount">
+                مبلغ پرداختی:
+            </label>
+
+            <input
+                type="number"
+                id="paidAmount"
+                min="0"
+                value="0"
+            >
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                باقی‌مانده:
+            </span>
+
+            <strong id="remainingAmount">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- دکمه‌ها -->
+
+    <div class="form-buttons">
+
+        <button
+            type="button"
+            id="savePurchaseBtn"
+        >
+            ثبت خرید
+        </button>
+
+
+        <button
+            type="button"
+            class="cancel-btn"
+            onclick="goBack()"
+        >
+            انصراف
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="/js/system-settings.js"></script>
+<script src="/js/purchases.js"></script>
+
+</body>
+
+</html>

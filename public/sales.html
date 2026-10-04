@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ثبت فاکتور فروش</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+
+    /* =========================
+       جستجوی دوا
+    ========================= */
+
+    .product-search-results {
+
+        position: absolute;
+
+        z-index: 1000;
+
+        width: 100%;
+
+        background: #fff;
+
+        border: 1px solid #ddd;
+
+        border-radius: 6px;
+
+        margin-top: 4px;
+
+        max-height: 250px;
+
+        overflow-y: auto;
+
+        display: none;
+
+    }
+
+
+    .product-search-item {
+
+        padding: 10px 12px;
+
+        cursor: pointer;
+
+        border-bottom: 1px solid #eee;
+
+    }
+
+
+    .product-search-item:last-child {
+
+        border-bottom: none;
+
+    }
+
+
+    .product-search-item:hover {
+
+        background: #f5f5f5;
+
+    }
+
+
+    .product-search-item strong {
+
+        display: block;
+
+        margin-bottom: 4px;
+
+    }
+
+
+    .product-search-item small {
+
+        color: #666;
+
+    }
+
+
+    .form-group {
+
+        position: relative;
+
+    }
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+    <!-- عنوان -->
+
+   <div class="page-title">
+
+    <h2>
+        ثبت فاکتور فروش
+    </h2>
+
+    <div style="display: flex; gap: 10px;">
+
+        <button
+            type="button"
+            onclick="window.location.href='/'"
+        >
+            🏠 داشبورد
+        </button>
+
+        <button
+            type="button"
+            onclick="goBack()"
+        >
+            ← بازگشت
+        </button>
+
+    </div>
+
+</div>
+
+
+    <!-- اطلاعات فاکتور -->
+
+    <div class="form-container">
+
+        <div class="form-grid">
+
+            <!-- مشتری -->
+
+            <div class="form-group">
+
+                <label>
+                    مشتری
+                </label>
+
+                <select id="customerSelect">
+
+                    <option value="">
+                        فروش نقدی / مشتری متفرقه
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- توضیحات -->
+
+            <div class="form-group">
+
+                <label>
+                    توضیحات
+                </label>
+
+                <input
+                    type="text"
+                    id="saleDescription"
+                    placeholder="توضیحات فاکتور"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- افزودن دوا -->
+
+    <div class="form-container">
+
+        <h3>
+            افزودن دوا
+        </h3>
+
+
+        <div class="form-grid">
+
+        <div class="form-group">
+
+    <label for="productSearch">
+        دوا
+    </label>
+
+    <input
+        type="text"
+        id="productSearch"
+        placeholder="نام دوا یا کد را جستجو/اسکن کنید..."
+        autocomplete="off"
+    >
+
+    <!-- شناسه دوا؛ برای ارتباط با JavaScript -->
+    <input
+        type="hidden"
+        id="productSelect"
+    >
+
+    <!-- نتایج جستجوی دوا -->
+    <div
+        id="productSearchResults"
+        class="product-search-results">
+    </div>
+
+</div>
+
+
+            <div class="form-group">
+
+                <label>
+                    تعداد
+                </label>
+
+                <input
+                    type="number"
+                    id="productQuantity"
+                    min="0.001"
+                    step="0.001"
+                    value="1"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    قیمت فروش
+                </label>
+
+                <input
+                    type="number"
+                    id="productPrice"
+                    min="0"
+                    step="0.01"
+                    placeholder="قیمت فروش"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    &nbsp;
+                </label>
+
+                <button
+                    type="button"
+                    id="addProductBtn"
+                >
+                    + افزودن به فاکتور
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- اقلام فاکتور -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        دوا
+                    </th>
+
+                    <th>
+                        تعداد
+                    </th>
+
+                    <th>
+                        قیمت فروش
+                    </th>
+
+                    <th>
+                        جمع
+                    </th>
+
+                    <th>
+                        عملیات
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="saleItemsBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- محاسبات فاکتور -->
+
+    <div class="form-container sale-summary">
+
+        <div class="summary-row">
+
+            <span>
+                مجموع دواها:
+            </span>
+
+            <strong id="totalAmount">
+                0
+            </strong>
+
+          <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <label for="discount">
+                تخفیف:
+            </label>
+
+            <input
+                type="number"
+                id="discount"
+                min="0"
+                value="0"
+            >
+
+        <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مبلغ نهایی:
+            </span>
+
+            <strong id="finalAmount">
+                0
+            </strong>
+
+         <span class="currency-label">
+    AFN
+</span>
+        </div>
+
+
+        <div class="summary-row">
+
+            <label for="paidAmount">
+                مبلغ پرداختی:
+            </label>
+
+            <input
+                type="number"
+                id="paidAmount"
+                min="0"
+                value="0"
+            >
+
+          <span class="currency-label">
+    AFN
+</span>
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                باقی‌مانده:
+            </span>
+
+            <strong id="remainingAmount">
+                0
+            </strong>
+
+      <span class="currency-label">
+    AFN
+</span>
+        </div>
+
+    </div>
+
+
+    <!-- ثبت -->
+
+    <div class="form-buttons">
+
+        <button
+            type="button"
+            id="saveSaleBtn"
+        >
+            ثبت فاکتور
+        </button>
+
+        <button
+            type="button"
+            class="cancel-btn"
+            onclick="goBack()"
+        >
+            انصراف
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="/js/system-settings.js"></script>
+<script src="/js/sales.js"></script>
+
+</body>
+
+</html>

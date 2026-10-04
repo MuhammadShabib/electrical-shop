@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>جزئیات فاکتور فروش</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+    <!-- سربرگ فاکتور -->
+
+  <div class="invoice-header">
+
+    <div id="invoiceLogoContainer">
+
+        <img
+            id="invoiceLogo"
+            src=""
+            alt="لوگوی فروشگاه"
+            style="
+                max-width:120px;
+                max-height:100px;
+                display:none;
+                margin:0 auto 10px;
+            ">
+
+    </div>
+
+
+    <h1>
+        فاکتور فروش
+    </h1>
+
+
+    <h2 id="invoiceShopName">
+        -
+    </h2>
+
+
+    <div id="invoiceShopContact">
+
+        <p id="invoicePhone">
+            -
+        </p>
+
+        <p id="invoiceAddress">
+            -
+        </p>
+
+    </div>
+
+
+    <p>
+        شماره فاکتور:
+        <strong id="printInvoiceNumber">-</strong>
+    </p>
+
+</div>
+
+
+    <!-- دکمه‌ها -->
+
+    <div class="page-title">
+
+        <h2>
+            جزئیات فاکتور فروش
+        </h2>
+
+     <div>
+
+    <button
+        type="button"
+        onclick="window.print()">
+        🖨 چاپ
+    </button>
+
+    <button
+        type="button"
+        id="returnSaleBtn">
+        ↩️ برگشت دوا
+    </button>
+
+    <button
+        type="button"
+        onclick="window.location.href='/sales.html'">
+        ← بازگشت
+    </button>
+
+</div>
+
+    </div>
+
+
+    <!-- اطلاعات فاکتور -->
+
+    <div class="form-container">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>
+                    شماره فاکتور
+                </label>
+
+                <strong id="invoiceNumber">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    تاریخ فروش
+                </label>
+
+                <strong id="saleDate">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    مشتری
+                </label>
+
+                <strong id="customerName">
+                    مشتری متفرقه
+                </strong>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    توضیحات
+                </label>
+
+                <strong id="description">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- اقلام فاکتور -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        کد دوا
+                    </th>
+
+                    <th>
+                        دوا
+                    </th>
+
+                    <th>
+                        واحد
+                    </th>
+
+                    <th>
+                        تعداد
+                    </th>
+
+                    <th>
+                        قیمت فروش
+                    </th>
+
+                    <th>
+                        جمع
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="saleItemsBody">
+
+                <tr>
+
+                    <td colspan="7">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- خلاصه فاکتور -->
+
+    <div class="form-container purchase-summary">
+
+        <div class="summary-row">
+
+            <span>
+                مجموع دواها:
+            </span>
+
+            <strong id="totalBeforeDiscount">
+                0
+            </strong>
+
+         <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                تخفیف:
+            </span>
+
+            <strong id="discount">
+                0
+            </strong>
+
+          <span class="currency-label">
+    AFN
+</span>
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مبلغ نهایی:
+            </span>
+
+            <strong id="totalAmount">
+                0
+            </strong>
+
+         <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                پرداختی:
+            </span>
+
+            <strong id="paidAmount">
+                0
+            </strong>
+
+           <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                باقی‌مانده:
+            </span>
+
+            <strong id="remainingAmount">
+                0
+            </strong>
+
+            <span class="currency-label">
+    AFN
+</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- امضا -->
+
+    <div class="invoice-signatures">
+
+        <div>
+            امضای مشتری:
+            __________________
+        </div>
+
+        <div>
+            امضای شرکت:
+            __________________
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="/js/sale-details.js"></script>
+<script src="/js/system-settings.js"></script>
+
+</body>
+
+</html>

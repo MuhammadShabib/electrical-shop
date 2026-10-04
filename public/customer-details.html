@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>گردش حساب مشتری</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+    <!-- عنوان و دکمه‌ها -->
+
+    <div class="page-title">
+
+        <h2>
+            گردش حساب مشتری
+        </h2>
+
+        <div>
+
+            <button
+                type="button"
+                onclick="window.location.href='/customers-list.html'">
+                ← بازگشت
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- اطلاعات مشتری -->
+
+    <div class="form-container">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>
+                    نام مشتری
+                </label>
+
+                <strong id="customerName">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    شماره تماس
+                </label>
+
+                <strong id="customerPhone">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    آدرس
+                </label>
+
+                <strong id="customerAddress">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    وضعیت حساب
+                </label>
+
+                <strong id="accountStatus">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- خلاصه حساب -->
+
+    <div class="form-container">
+
+        <div class="summary-row">
+
+            <span>
+                مانده اولیه:
+            </span>
+
+            <strong id="openingBalance">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع بدهکار:
+            </span>
+
+            <strong id="totalDebit">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع بستانکار:
+            </span>
+
+            <strong id="totalCredit">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مانده نهایی:
+            </span>
+
+            <strong id="finalBalance">
+                0
+            </strong>
+
+            <span>
+                افغانی
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- گردش حساب -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        تاریخ
+                    </th>
+
+                    <th>
+                        نوع تراکنش
+                    </th>
+
+                    <th>
+                        توضیحات
+                    </th>
+
+                    <th>
+                        بدهکار
+                    </th>
+
+                    <th>
+                        بستانکار
+                    </th>
+
+                    <th>
+                        مانده
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="transactionsBody">
+
+                <tr>
+
+                    <td colspan="7">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<script src="/js/customer-details.js"></script>
+
+</body>
+
+</html>

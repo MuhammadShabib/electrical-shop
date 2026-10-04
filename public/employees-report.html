@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>گزارش کارمندان</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+    <style>
+
+        .print-report-header {
+            display: none;
+        }
+
+
+        @media print {
+
+            .header,
+            .page-title button,
+            .report-filters,
+            .report-actions,
+            .no-print {
+                display: none !important;
+            }
+
+
+            .print-report-header {
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #000;
+            }
+
+
+            .print-report-header h2 {
+                margin: 0 0 5px;
+            }
+
+
+            .print-report-header p {
+                margin: 0;
+            }
+
+
+            .container {
+                width: 100%;
+                max-width: none;
+            }
+
+
+            .table-container {
+                overflow: visible;
+            }
+
+
+            table {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- عنوان -->
+
+    <div class="page-title">
+
+        <h2>
+            👨‍💼 گزارش کارمندان
+        </h2>
+
+
+        <div>
+
+            <button
+                type="button"
+                onclick="window.location.href='/reports-menu.html'">
+
+                ← گزارشات
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- عنوان چاپ -->
+
+    <div class="print-report-header">
+
+        <h2>
+            گزارش کارمندان
+        </h2>
+
+        <p id="printDateRange">
+            همه معاملات
+        </p>
+
+    </div>
+
+
+    <!-- فیلتر -->
+
+    <div class="form-container report-filters">
+
+        <h3>
+            فیلتر گزارش
+        </h3>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label for="fromDate">
+                    از تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="fromDate">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="toDate">
+                    تا تاریخ
+                </label>
+
+                <input
+                    type="date"
+                    id="toDate">
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            class="form-buttons report-actions"
+            style="margin-top:20px;">
+
+            <button
+                type="button"
+                id="generateReportBtn">
+
+                نمایش گزارش
+
+            </button>
+
+
+            <button
+                type="button"
+                id="todayBtn">
+
+                امروز
+
+            </button>
+
+
+            <button
+                type="button"
+                id="thisMonthBtn">
+
+                این ماه
+
+            </button>
+
+
+            <button
+                type="button"
+                id="clearDateBtn"
+                class="cancel-btn">
+
+                همه
+
+            </button>
+
+
+            <button
+                type="button"
+                id="printReportBtn">
+
+                🖨 چاپ
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="reportMessage"
+            style="margin-top:20px;">
+
+        </div>
+
+    </div>
+
+
+    <!-- خلاصه -->
+
+    <div class="form-container">
+
+        <h3>
+            خلاصه کارمندان
+        </h3>
+
+
+        <div class="summary-row">
+
+            <span>
+                تعداد کارمندان:
+            </span>
+
+            <strong id="employeeCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع معاش:
+            </span>
+
+            <strong id="totalSalary">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع برداشت:
+            </span>
+
+            <strong id="totalWithdrawals">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع پرداخت معاش:
+            </span>
+
+            <strong id="totalSalaryPayments">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                مجموع مانده:
+            </span>
+
+            <strong id="totalBalance">
+                0
+            </strong>
+
+            <span class="currency-label">
+                AFN
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                تعداد معاملات:
+            </span>
+
+            <strong id="transactionCount">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- جدول -->
+
+    <div class="table-container">
+
+        <h3>
+            حساب کارمندان
+        </h3>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        نام کارمند
+                    </th>
+
+                    <th>
+                        شماره تماس
+                    </th>
+
+                    <th>
+                        معاش
+                    </th>
+
+                    <th>
+                        برداشت
+                    </th>
+
+                    <th>
+                        پرداخت معاش
+                    </th>
+
+                    <th>
+                        مانده
+                    </th>
+
+                    <th>
+                        وضعیت
+                    </th>
+
+                    <th>
+                        معاملات
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="employeesReportBody">
+
+                <tr>
+
+                    <td colspan="9">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</main>
+
+
+<script src="/js/system-settings.js"></script>
+<script src="/js/employees-report.js"></script>
+
+</body>
+
+</html>

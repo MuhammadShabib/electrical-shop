@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>حساب شرکت</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>
+        سیستم مدیریت دواخانه
+    </h1>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- اطلاعات شرکت -->
+
+    <div class="page-title">
+
+        <div>
+
+            <h2 id="supplierName">
+                حساب شرکت
+            </h2>
+
+            <p id="supplierPhone">
+                -
+            </p>
+
+        </div>
+
+
+        <div style="display:flex; gap:10px;">
+
+            <button
+                type="button"
+                onclick="window.location.href='/'">
+
+                🏠 داشبورد
+
+            </button>
+
+            <button
+                type="button"
+                onclick="goBack()">
+
+                ← بازگشت به شرکت ها
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- خلاصه حساب -->
+
+    <div class="account-summary">
+
+
+        <div class="balance-card">
+
+            <span>
+                مانده بدهی به شرکت
+            </span>
+
+            <strong id="balanceAmount">
+                0
+            </strong>
+
+            <small id="balanceType">
+                تسویه
+            </small>
+
+        </div>
+
+
+        <div class="balance-card">
+
+            <span>
+                مجموع خریدها
+            </span>
+
+            <strong id="totalPurchases">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="balance-card">
+
+            <span>
+                مجموع پرداخت‌ها
+            </span>
+
+            <strong id="totalPayments">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- عملیات -->
+
+    <div class="account-actions">
+
+        <button
+            id="addPaymentBtn"
+            class="credit-action">
+
+            + ثبت پرداخت به شرکت
+
+        </button>
+
+    </div>
+
+
+    <!-- گردش حساب -->
+
+    <div class="section-title">
+
+        <h3>
+            گردش حساب شرکت
+        </h3>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        تاریخ
+                    </th>
+
+                    <th>
+                        شرح
+                    </th>
+
+                    <th>
+                        خرید
+                    </th>
+
+                    <th>
+                        پرداخت
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="transactionsTableBody">
+
+                <tr>
+
+                    <td colspan="4">
+                        در حال دریافت اطلاعات...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<script src="/js/supplier-account.js"></script>
+
+</body>
+
+</html>
